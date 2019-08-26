@@ -10,4 +10,5 @@ function warrior() {
     this.x = 11;  //横坐标
     this.y = 6;      //纵坐标
     this.floor = 1;  //层数
+    this.can_move = true;   //能否移动(某些特殊情况禁止勇士移动)
 }

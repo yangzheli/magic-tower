@@ -1,22 +1,32 @@
-//监听键盘控制勇士移动
+//键盘监听(控制勇士移动等)
 window.addEventListener("keydown", function (event) {
     var dx = 0, dy = 0;
     switch (event.which) {
-        case 87:    //上
+        case 87:    //W-上
             dx = -1;
             dy = 0;
             break;
-        case 83:    //下
+        case 83:    //S-下
             dx = 1;
             dy = 0;
             break;
-        case 65:    //左
+        case 65:    //A-左
             dx = 0;
             dy = -1;
             break;
-        case 68:    //右
+        case 68:    //D-右
             dx = 0;
             dy = 1;
+            break;
+
+        case 90:    //Z-存档
+            save();
+            break;
+        case 88:    //X-读档
+            load();
+            break;
+        case 67:    //C-重新开始
+            restart();
             break;
         default:
             break;
@@ -26,7 +36,7 @@ window.addEventListener("keydown", function (event) {
         return;
     }
     var x = warrior.x + dx, y = warrior.y + dy;
-    if (x >= 0 && x < SIZE && y >= 0 && y < SIZE && map[warrior.floor][x][y] != 2) {
+    if (warrior.can_move && x >= 0 && x < SIZE && y >= 0 && y < SIZE && map[warrior.floor][x][y] != 2) {
         switch (map[warrior.floor][x][y]) {
             case 1:
                 to_road(warrior.x, warrior.y);
@@ -68,8 +78,9 @@ window.addEventListener("keydown", function (event) {
                 }
                 break;
             case 62:
-                //触发第二层小偷事件
-                thief();
+                if (warrior.floor == 2 && x == 7 && y == 3) {   //触发第二层小偷事件
+                    thief();
+                }
                 break;
             case 80:
                 to_road(warrior.x, warrior.y);

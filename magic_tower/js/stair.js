@@ -13,20 +13,15 @@ function upstairs() {
         case 2:
             warrior.x = 11;
             warrior.y = 2;
+            break;
+        case 3:
+            warrior.x = 10;
+            warrior.y = 11;
+            break;
         default:
             break;
     }
-    var container = document.getElementById("game");
-    var child = document.getElementById("main");
-    container.removeChild(child);
-
-    var main = document.createElement("div");
-    main.id = "main";
-    main.setAttribute("class", "main");
-    container.appendChild(main);
-    init_road(map);
-    init_warrior();
-    init_others(map);
+    re_init(map);
 }
 
 //下楼
@@ -45,18 +40,12 @@ function downstairs() {
             warrior.x = 10;
             warrior.y = 1;
             break;
+        case 4:
+            warrior.x = 11;
+            warrior.y = 10;
+            break;
         default:
             break;
     }
-    var container = document.getElementById("game");
-    var child = document.getElementById("main");
-    container.removeChild(child);
-
-    var main = document.createElement("div");
-    main.id = "main";
-    main.setAttribute("class", "main");
-    container.appendChild(main);
-    init_road(map);
-    init_warrior();
-    init_others(map);
+    re_init(map);
 }

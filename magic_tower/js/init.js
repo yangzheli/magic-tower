@@ -1,3 +1,23 @@
+//地图初始化
+function init(map) {
+    init_road(map);
+    init_warrior();
+    init_others(map);
+}
+
+//(上楼、下楼、读档时)地图重新载入
+function re_init(map) {
+    var container = document.getElementById("game");
+    var child = document.getElementById("main");
+    container.removeChild(child);
+
+    var main = document.createElement("div");
+    main.id = "main";
+    main.setAttribute("class", "main");
+    container.appendChild(main);
+    init(map);
+}
+
 //往地图铺一层路
 function init_road(map) {
     var main = document.getElementById("main");
@@ -156,7 +176,9 @@ function init_others(map) {
                 case 64:    //魔法警卫(第三层出现，只会触发对话)
                     element.setAttribute("class", "resource_64");
                     break;
-                case 65:    //公主
+                case 65:    //商店(加血量、攻击力、防御力)
+                    element.setAttribute("class", "resource_65");
+                case 66:    //公主
                     break;
 
                 /**
@@ -196,6 +218,4 @@ function init_others(map) {
 
 var warrior = new warrior();
 var monster = new monster();
-init_road(map);
-init_warrior();
-init_others(map);
+init(map);

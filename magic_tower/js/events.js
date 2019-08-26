@@ -1,5 +1,8 @@
 //第三层魔王事件
 function devil() {
+    //禁止勇士移动
+    warrior.can_move = false;
+
     //魔王出现
     document.getElementById("7#5").style.visibility = "visible";
 
@@ -31,23 +34,17 @@ function devil() {
         warrior.y = 3;
         warrior.attack = 10;
         warrior.defense = 10;
+        warrior.can_move = true;
 
-        var container = document.getElementById("game");
-        var child = document.getElementById("main");
-        container.removeChild(child);
-
-        var main = document.createElement("div");
-        main.id = "main";
-        main.setAttribute("class", "main");
-        container.appendChild(main);
-        init_road(map);
-        init_warrior();
-        init_others(map);
+        re_init(map);
     }, 1 * 1000);
 }
 
 //第二层小偷事件
 function thief() {
+    //禁止勇士移动
+    warrior.can_move = false;
+
     //挖墙
     to_thief(7, 2);
     to_road(7, 3);
@@ -63,4 +60,13 @@ function thief() {
         to_thief(9, 1);
         to_road(8, 1);
     }, 1000);
+    setTimeout(function () {
+        to_thief(10, 1);
+        to_road(9, 1);
+    }, 1000);
+    setTimeout(function () {
+        to_road(10, 1);
+    }, 1000);
+
+    warrior.can_move = true;
 }
