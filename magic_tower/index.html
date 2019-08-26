@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>魔塔</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/init.css">
+</head>
+<body>
+
+<div id="game" class="game">
+    <div id="attribute" class="attribute">
+        <div id="floor" class="floor"></div>
+        <div class="col">
+            <img class="blood_img" src="images/attribute/blood.png" alt="血量">
+            <div id="blood" class="value"></div>
+        </div>
+        <div class="col">
+            <img class="blood_img" src="images/attribute/attack.png" alt="攻击力">
+            <div id="attack" class="value"></div>
+        </div>
+        <div class="col">
+            <img class="blood_img" src="images/attribute/defense.png" alt="防御力">
+            <div id="defense" class="value"></div>
+        </div>
+        <div class="col">
+            <img class="blood_img" src="images/attribute/gold.png" alt="金钱">
+            <div id="gold" class="value"></div>
+        </div>
+        <div id="tools" class="tools"></div>
+    </div>
+
+    <div id="main" class="main">
+
+    </div>
+
+    <div id="possess" class="possess">
+        <div id="weapon" class="weapon">
+            <div id="weapon_name" class="weapon_name">神圣剑</div>
+            <img class="weapon_img" src="images/possess/weapon.png" alt="武器">
+        </div>
+        <div id="armor" class="weapon">
+            <div id="armor_name" class="weapon_name">神圣盾</div>
+            <img class="weapon_img" src="images/possess/armor.png" alt="防具">
+        </div>
+        <!--<div id="keys" class="keys">-->
+        <!--<img class="key_img" src="images/main/resource_80.png" alt="黄钥匙">-->
+        <!--<div id="yellow_key" class="value">1</div>-->
+        <!--</div>-->
+        <div id="keys" class="keys"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/warrior.js"></script>
+<script type="text/javascript" src="js/monster.js"></script>
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="js/move.js"></script>
+<script type="text/javascript" src="js/attack.js"></script>
+<script type="text/javascript" src="js/stair.js"></script>
+<script type="text/javascript" src="js/events.js"></script>
+
+</body>
+</html>
