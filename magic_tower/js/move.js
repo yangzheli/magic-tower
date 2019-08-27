@@ -28,6 +28,22 @@ window.addEventListener("keydown", function (event) {
         case 67:    //C-重新开始
             restart();
             break;
+
+        case 49:    //1-怪物手册
+            if (warrior.handlebook) {
+                handbook();
+            }
+            break;
+        case 50:    //2-
+            break;
+        case 51:    //3-
+            break;
+
+        case 81:    //Q-
+            break;
+        case 69:    //E-
+            break;
+
         default:
             break;
     }
@@ -47,6 +63,7 @@ window.addEventListener("keydown", function (event) {
                     to_road(warrior.x, warrior.y);
                     to_warrior(x, y);
                     warrior.yellow_key--;
+                    refresh_keys();
                 }
                 break;
             case 6:
@@ -54,6 +71,15 @@ window.addEventListener("keydown", function (event) {
                     to_road(warrior.x, warrior.y);
                     to_warrior(x, y);
                     warrior.blue_key--;
+                    refresh_keys();
+                }
+                break;
+            case 7:
+                if (warrior.red_key > 0) {
+                    to_road(warrior.x, warrior.y);
+                    to_warrior(x, y);
+                    warrior.red_key--;
+                    refresh_keys();
                 }
                 break;
             case 8:
@@ -77,15 +103,36 @@ window.addEventListener("keydown", function (event) {
                     to_warrior(x, y);
                 }
                 break;
+            case 60:
+                if (warrior.floor == 3 && x == 4 && y == 11) {  //触发第二层智者事件(得到怪物手册)
+                    sage();
+                }
+                break;
             case 62:
                 if (warrior.floor == 2 && x == 7 && y == 3) {   //触发第二层小偷事件
                     thief();
                 }
                 break;
+            case 66:    //商店
+                store();
+                break;
             case 80:
                 to_road(warrior.x, warrior.y);
                 to_warrior(x, y);
                 warrior.yellow_key++;
+                refresh_keys();
+                break;
+            case 81:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.blue_key++;
+                refresh_keys();
+                break;
+            case 82:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.red_key++;
+                refresh_keys();
                 break;
             case 83:
                 to_road(warrior.x, warrior.y);
@@ -107,6 +154,66 @@ window.addEventListener("keydown", function (event) {
                 to_warrior(x, y);
                 warrior.defense += 1;
                 break;
+            case 87:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.attack += 10;
+                warrior.weapon = 'Iron Sword';
+                break;
+            case 88:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.defense += 10;
+                warrior.armor = 'Iron Shield';
+                break;
+            case 89:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.attack += 20;
+                warrior.weapon = 'Silver Sword';
+                break;
+            case 90:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.defense += 20;
+                warrior.armor = 'Silver Shield';
+                break;
+            case 91:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.attack += 40;
+                warrior.weapon = 'Knight Sword';
+                break;
+            case 92:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.defense += 40;
+                warrior.armor = 'Knight Shield';
+                break;
+            case 93:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.attack += 50;
+                warrior.weapon = 'Holy Sword';
+                break;
+            case 94:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.defense += 50;
+                warrior.armor = 'Holy Shield';
+                break;
+            case 95:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.attack += 100;
+                warrior.weapon = 'Sacred Sword';
+                break;
+            case 96:
+                to_road(warrior.x, warrior.y);
+                to_warrior(x, y);
+                warrior.defense += 100;
+                warrior.armor = 'Sacred Shield';
+                break;
             default:
                 break;
         }
@@ -116,6 +223,14 @@ window.addEventListener("keydown", function (event) {
             devil();
         }
         refresh_attribute();
+        refresh_weapon();
+    }
+
+    //暗墙(某些特殊的墙可以被破开)
+    if (warrior.can_move && map[warrior.floor][x][y] == 2 &&
+        ((warrior.floor == 5 && x == 11 && y == 9) || (warrior.floor == 9 && x == 5 && y == 10))) {      //第5层，第9层
+        to_road(warrior.x, warrior.y);
+        to_warrior(x, y);
     }
 })
 

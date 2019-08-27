@@ -28,12 +28,15 @@ function devil() {
         to_road(9, 4);
         to_road(9, 6);
 
-        //勇士被关入二层监狱(神圣剑，神圣盾被夺走)
+        //勇士被关入二层监狱(神圣剑，神圣盾被夺走，血量变成400)
         warrior.floor = 2;
         warrior.x = 8;
         warrior.y = 3;
+        warrior.dp = 400;
         warrior.attack = 10;
         warrior.defense = 10;
+        warrior.weapon = 'None';
+        warrior.armor = 'None';
         warrior.can_move = true;
 
         re_init(map);
@@ -69,4 +72,54 @@ function thief() {
     }, 1000);
 
     warrior.can_move = true;
+}
+
+//第二层智者事件
+function sage() {
+    //获得怪物手册
+    warrior.handlebook = true;
+    to_road(4, 11);
+}
+
+//商店
+function store() {
+    var store = document.getElementById("store");
+    store.style.display = 'block';
+}
+
+//商店选项一:提升血量
+function increase_dp() {
+    warrior.dp += 100;
+    warrior.gold -= 20;
+
+    var store = document.getElementById("store");
+    store.style.display = 'none';
+    refresh_attribute();
+}
+
+//商店选项二:提升攻击力
+function increase_attack() {
+    warrior.attack += 2;
+    warrior.gold -= 20;
+
+    var store = document.getElementById("store");
+    store.style.display = 'none';
+    refresh_attribute();
+}
+
+//商店选项三:提升防御力
+function increase_defense() {
+    warrior.defense += 4;
+    warrior.gold -= 20;
+
+    var store = document.getElementById("store");
+    store.style.display = 'none';
+    refresh_attribute();
+}
+
+//商店选项四:下次再说
+function thanks() {
+    var store = document.getElementById("store");
+    store.style.display = 'none';
+    refresh_attribute();
 }

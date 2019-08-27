@@ -11,4 +11,7 @@ function warrior() {
     this.y = 6;      //纵坐标
     this.floor = 1;  //层数
     this.can_move = true;   //能否移动(某些特殊情况禁止勇士移动)
+    this.handlebook = false;    //是否拥有怪物手册
+    this.weapon = 'Sacred Sword';     //武器:'Sacred Sword'|'Holy Sword'|'Knight Sword'|'Silver Sword'|'Iron Sword'|'None'
+    this.armor = 'Sacred Shield';     //防具:'Sacred Shield'|'Holy Shield'|'Knight Shield'|'Silver Shield'|'Iron Shield'|'None'
 }

@@ -1,6 +1,6 @@
 //地图初始化
 function init(map) {
-    init_road(map);
+    init_road();
     init_warrior();
     init_others(map);
 }
@@ -16,10 +16,11 @@ function re_init(map) {
     main.setAttribute("class", "main");
     container.appendChild(main);
     init(map);
+    refresh_keys();
 }
 
 //往地图铺一层路
-function init_road(map) {
+function init_road() {
     var main = document.getElementById("main");
     var element;
     for (var i = 0; i < SIZE; i++) {
@@ -32,7 +33,7 @@ function init_road(map) {
     }
 }
 
-//初始化勇士位置及属性
+//初始化勇士位置、属性、装备及拥有物品
 function init_warrior() {
     var element = document.createElement("div");
     element.setAttribute("class", "warrior");
@@ -40,6 +41,7 @@ function init_warrior() {
     container.appendChild(element);
 
     refresh_attribute();
+    refresh_weapon();
 }
 
 //刷新勇士的属性
@@ -49,6 +51,122 @@ function refresh_attribute() {
     document.getElementById("attack").innerText = warrior.attack;
     document.getElementById("defense").innerText = warrior.defense;
     document.getElementById("gold").innerText = warrior.gold;
+}
+
+//刷新勇士的武器、防具
+function refresh_weapon() {
+    var weapon_name = document.getElementById("weapon_name");
+    var weapon_img = document.getElementById("weapon_img");
+    switch (warrior.weapon) {
+        //神圣剑
+        case 'Sacred Sword':
+            weapon_name.innerText = '武器\n神圣剑';
+            weapon_img.style.backgroundImage = 'url(images/possess/weapon_1.png)';
+            break;
+        //圣剑
+        case 'Holy Sword':
+            weapon_name.innerText = '武器\n圣剑';
+            weapon_img.style.backgroundImage = 'url(images/possess/weapon_2.png)';
+            break;
+        //骑士剑
+        case 'Knight Sword':
+            weapon_name.innerText = '武器\n骑士剑';
+            weapon_img.style.backgroundImage = 'url(images/possess/weapon_3.png)';
+            break;
+        //银剑
+        case 'Silver Sword':
+            weapon_name.innerText = '武器\n银剑';
+            weapon_img.style.backgroundImage = 'url(images/possess/weapon_4.png)';
+            break;
+        //铁剑
+        case 'Iron Sword':
+            weapon_name.innerText = '武器\n铁剑';
+            weapon_img.style.backgroundImage = 'url(images/possess/weapon_5.png)';
+            break;
+        //无
+        case 'None':
+            weapon_name.innerText = '武器\n无';
+            weapon_img.style.backgroundImage = 'url(images/attribute/gray.png)';
+            break;
+        default :
+            weapon_name.innerText = '武器\n无';
+            weapon_img.style.backgroundImage = 'url(images/attribute/gray.png)';
+            break;
+    }
+
+    var armor_name = document.getElementById("armor_name");
+    var armor_img = document.getElementById("armor_img");
+    switch (warrior.armor) {
+        //神圣盾
+        case 'Sacred Shield':
+            armor_name.innerText = '防具\n神圣盾';
+            armor_img.style.backgroundImage = 'url(images/possess/armor_1.png)';
+            break;
+        //圣盾
+        case 'Holy Shield':
+            armor_name.innerText = '防具\n圣盾';
+            armor_img.style.backgroundImage = 'url(images/possess/armor_2.png)';
+            break;
+        //骑士盾
+        case 'Knight Shield':
+            armor_name.innerText = '防具\n骑士盾';
+            armor_img.style.backgroundImage = 'url(images/possess/armor_3.png)';
+            break;
+        //银盾
+        case 'Silver Shield':
+            armor_name.innerText = '防具\n银盾';
+            armor_img.style.backgroundImage = 'url(images/possess/armor_4.png)';
+            break;
+        //铁盾
+        case 'Iron Shield':
+            armor_name.innerText = '防具\n铁盾';
+            armor_img.style.backgroundImage = 'url(images/possess/armor_5.png)';
+            break;
+        //无
+        case 'None':
+            armor_name.innerText = '防具\n无';
+            armor_img.style.backgroundImage = 'url(images/attribute/gray.png)';
+            break;
+        default :
+            armor_name.innerText = '防具\n无';
+            armor_img.style.backgroundImage = 'url(images/attribute/gray.png)';
+            break;
+    }
+}
+
+//刷新勇士的钥匙
+function refresh_keys() {
+    var container = document.getElementById("possess");
+    var child = document.getElementById("keys");
+    container.removeChild(child);
+
+    var keys = document.createElement("div");
+    keys.id = "keys";
+    keys.setAttribute("class", "keys");
+    container.appendChild(keys);
+
+    var yellow_keys = warrior.yellow_key, blue_keys = warrior.blue_key, red_keys = warrior.red_key;
+    var element;
+    if (yellow_keys != 0 || blue_keys != 0 || red_keys != 0) {
+        while (red_keys != 0) {
+            element = document.createElement("div");
+            element.setAttribute("class", "red_key");
+            keys.appendChild(element);
+            red_keys--;
+        }
+        while (blue_keys != 0) {
+            element = document.createElement("div");
+            element.setAttribute("class", "blue_key");
+            keys.appendChild(element);
+            blue_keys--;
+        }
+        while (yellow_keys != 0) {
+            element = document.createElement("div");
+            element.setAttribute("class", "yellow_key");
+            keys.appendChild(element);
+            yellow_keys--;
+        }
+    }
 }
 
 //初始化地图的墙、门、道具、怪物、NPC等其它资源
@@ -76,7 +194,7 @@ function init_others(map) {
                 case 6:     //蓝门
                     element.setAttribute("class", "resource_6");
                     break;
-                case 7:
+                case 7:     //红门
                     element.setAttribute("class", "resource_7");
                     break;
                 case 8:     //下一层楼梯
@@ -85,10 +203,10 @@ function init_others(map) {
                 case 9:     //上一层楼梯
                     element.setAttribute("class", "resource_9");
                     break;
-                case 10:
+                case 10:    //铁栅栏门
                     element.setAttribute("class", "resource_10");
                     break;
-                case 11:
+                case 11:    //魔法门(击败守卫的卫兵门自动打开)
                     element.setAttribute("class", "resource_11");
                     break;
 
@@ -176,9 +294,16 @@ function init_others(map) {
                 case 64:    //魔法警卫(第三层出现，只会触发对话)
                     element.setAttribute("class", "resource_64");
                     break;
-                case 65:    //商店(加血量、攻击力、防御力)
+                case 65:    //商店(加血量、攻击力、防御力)(第一部分)
                     element.setAttribute("class", "resource_65");
-                case 66:    //公主
+                    break;
+                case 66:    //商店(加血量、攻击力、防御力)(第二部分)
+                    element.setAttribute("class", "resource_66");
+                    break;
+                case 67:    //商店(加血量、攻击力、防御力)(第三部分)
+                    element.setAttribute("class", "resource_67");
+                    break;
+                case 68:    //公主
                     break;
 
                 /**
@@ -204,6 +329,33 @@ function init_others(map) {
                     break;
                 case 86:    //蓝宝石
                     element.setAttribute("class", "resource_86");
+                    break;
+                case 87:    //铁剑
+                    element.setAttribute("class", "resource_87");
+                    break;
+                case 88:    //铁盾
+                    element.setAttribute("class", "resource_88");
+                    break;
+                case 89:    //银剑
+                    break;
+                case 90:    //银盾
+                    break;
+                case 91:    //骑士剑
+                    break;
+                case 92:    //骑士盾
+                    break;
+                case 93:    //圣剑
+                    break;
+                case 94:    //圣盾
+                    break;
+                case 95:    //神圣剑
+                    break;
+                case 96:    //神圣盾
+                    break;
+                case 97:    //怪物手册
+                    break;
+                case 98:    //记事本
+                    element.setAttribute("class", "resource_98");
                     break;
                 default:
                     break;

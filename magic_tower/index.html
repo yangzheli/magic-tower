@@ -36,23 +36,32 @@
 
     <div id="possess" class="possess">
         <div id="weapon" class="weapon">
-            <div id="weapon_name" class="weapon_name">神圣剑</div>
-            <img class="weapon_img" src="images/possess/weapon.png" alt="武器">
+            <div id="weapon_name" class="weapon_name">武器<br>神圣剑</div>
+            <div id="weapon_img" class="weapon_img"></div>
         </div>
         <div id="armor" class="weapon">
-            <div id="armor_name" class="weapon_name">神圣盾</div>
-            <img class="weapon_img" src="images/possess/armor.png" alt="防具">
+            <div id="armor_name" class="armor_name">武器<br>神圣盾</div>
+            <div id="armor_img" class="armor_img"></div>
         </div>
-        <!--<div id="keys" class="keys">-->
-        <!--<img class="key_img" src="images/main/resource_80.png" alt="黄钥匙">-->
-        <!--<div id="yellow_key" class="value">1</div>-->
-        <!--</div>-->
+
         <div id="keys" class="keys"></div>
     </div>
 
     <!-- 默认隐藏的界面 -->
+    <!-- 对话框 -->
     <div id="message" class="message"></div>
+    <!-- 读取存档 -->
     <div id="load" class="load"></div>
+    <!-- 怪物手册,读取本层怪物信息 -->
+    <div id="handbook" class="handbook">按ENTER继续</div>
+    <!-- 商店 -->
+    <div id="store" class="store">
+        <div class="store_title">你若给我&nbsp;&nbsp;20&nbsp;&nbsp;个金币，我就替你提升以下一种能力。</div>
+        <div class="store_content" onclick="increase_dp()">1>&nbsp;&nbsp;&nbsp;生命力 + 100</div>
+        <div class="store_content" onclick="increase_attack()">2>&nbsp;&nbsp;&nbsp;攻击力 + 2</div>
+        <div class="store_content" onclick="increase_defense()">3>&nbsp;&nbsp;&nbsp;防御力 + 4</div>
+        <div class="store_content" onclick="thanks()">4>&nbsp;&nbsp;&nbsp;谢谢，下次再说</div>
+    </div>
 
     <div id="tips" class="tips">SPACE-帮助 Z-保存游戏 X-载入存档 C-重新开始</div>
 </div>
@@ -66,6 +75,7 @@
 <script type="text/javascript" src="js/stair.js"></script>
 <script type="text/javascript" src="js/events.js"></script>
 <script type="text/javascript" src="js/save.js"></script>
+<script type="text/javascript" src="js/tools.js"></script>
 
 </body>
 </html>

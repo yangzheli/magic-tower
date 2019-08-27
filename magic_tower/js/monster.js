@@ -47,11 +47,39 @@ function init_monster(id) {
             monster.gold = 8;
             monster.attack_first = false;
             break;
+        case 29:    //骷髅队长
+            monster.dp = 100;
+            monster.attack = 65;
+            monster.defense = 15;
+            monster.gold = 30;
+            monster.attack_first = false;
+            break;
         case 30:    //初级法师
             monster.dp = 60;
             monster.attack = 32;
             monster.defense = 8;
             monster.gold = 5;
+            monster.attack_first = false;
+            break;
+        case 37:    //初级卫兵
+            monster.dp = 50;
+            monster.attack = 48;
+            monster.defense = 22;
+            monster.gold = 12;
+            monster.attack_first = false;
+            break;
+        case 38:    //中级卫兵
+            monster.dp = 100;
+            monster.attack = 180;
+            monster.defense = 110;
+            monster.gold = 100;
+            monster.attack_first = false;
+            break;
+        case 39:    //高级卫兵
+            monster.dp = 180;
+            monster.attack = 460;
+            monster.defense = 360;
+            monster.gold = 200;
             monster.attack_first = false;
             break;
         default:

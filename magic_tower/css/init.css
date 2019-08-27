@@ -5,6 +5,23 @@
     display: inline-block;
 }
 
+.yellow_key {
+    height: 30px;
+    width: 20px;
+    margin-left: 5px;
+    background: url(../images/possess/yellow_key.png);
+    display: inline-block;
+}
+
+.blue_key {
+    height: 30px;
+    width: 20px;
+    margin-left: 5px;
+    background: url(../images/possess/blue_key.png);
+    display: inline-block;
+}
+
+
 .resource_1 {
     height: 46px;
     width: 46px;
@@ -31,7 +48,13 @@
     width: 46px;
     background: url(../images/main/resource_6.png);
     display: inline-block;
-    padding: 0px 0px 0px 0px;
+}
+
+.resource_7 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_7.png);
+    display: inline-block;
 }
 
 .resource_8 {
@@ -52,6 +75,13 @@
     height: 46px;
     width: 46px;
     background: url(../images/main/resource_10.png);
+    display: inline-block;
+}
+
+.resource_11 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_11.png);
     display: inline-block;
 }
 
@@ -90,10 +120,24 @@
     display: inline-block;
 }
 
+.resource_29 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_29.png);
+    display: inline-block;
+}
+
 .resource_30 {
     height: 46px;
     width: 46px;
     background: url(../images/main/resource_30.png);
+    display: inline-block;
+}
+
+.resource_37 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_37.png);
     display: inline-block;
 }
 
@@ -146,10 +190,38 @@
     display: inline-block;
 }
 
+.resource_66 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_66.png);
+    display: inline-block;
+}
+
+.resource_67 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_67.png);
+    display: inline-block;
+}
+
 .resource_80 {
     height: 46px;
     width: 46px;
     background: url(../images/main/resource_80.png);
+    display: inline-block;
+}
+
+.resource_81 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_81.png);
+    display: inline-block;
+}
+
+.resource_82 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_82.png);
     display: inline-block;
 }
 
@@ -178,5 +250,26 @@
     height: 46px;
     width: 46px;
     background: url(../images/main/resource_86.png);
+    display: inline-block;
+}
+
+.resource_87 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_87.png);
+    display: inline-block;
+}
+
+.resource_88 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_88.png);
+    display: inline-block;
+}
+
+.resource_98 {
+    height: 46px;
+    width: 46px;
+    background: url(../images/main/resource_98.png);
     display: inline-block;
 }
